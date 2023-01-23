@@ -51,11 +51,20 @@ map("i", "<C-l>", "<right>")
 map("i", "<M-h>", "<s-left>")
 map("i", "<M-l>", "<s-right>")
 
--- Select window
+-- Window
+map("n", "<leader>-", "<cmd>resize -10<cr>")
+map("n", "<leader>+", "<cmd>resize +10<cr>")
+map("n", "<leader><", "<cmd>vertical resize -10<cr>")
+map("n", "<leader>>", "<cmd>vertical resize +10<cr>")
+
 map("n", "<M-h>", "<c-w>h")
 map("n", "<M-j>", "<c-w>j")
 map("n", "<M-k>", "<c-w>k")
 map("n", "<M-l>", "<c-w>l")
+map("n", "<leader>wh", "<c-w>h")
+map("n", "<leader>wj", "<c-w>j")
+map("n", "<leader>wk", "<c-w>k")
+map("n", "<leader>wl", "<c-w>l")
 
 -- Buffer
 map("n", "<leader><tab>", "<cmd>e#<cr>", {
@@ -105,7 +114,6 @@ map("n", "<leader>fp", "<cmd>Neotree reveal toggle<cr>", {
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", {
   desc = "Recent File"
 })
-
 map("n", "<leader>fs", "<cmd>w<cr>", {
   desc = "Save Buffer"
 })

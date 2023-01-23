@@ -55,7 +55,6 @@ wk.register {
     v = "View/Visual",
     w = "Window",
     x = "Error",
-    y = "Snippet",
     z = "Toggle"
   }
 }

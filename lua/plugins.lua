@@ -23,11 +23,17 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim"
 
   -- Edit --
+  -- Jump
+  use {
+    "phaazon/hop.nvim",
+    branch = "v2",
+    config = [[require("config.hop")]]
+  }
 
   -- Pair
   use {
     "windwp/nvim-autopairs",
-    config = [[ require("nvim-autopairs").setup {} ]]
+    config = [[require("nvim-autopairs").setup {}]]
   }
 
   -- Coding --
@@ -37,19 +43,19 @@ return packer.startup(function(use)
     "neovim/nvim-lspconfig",
     -- wants = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"},
     -- requires = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"},
-    config = [[ require("config.lsp") ]]
+    config = [[require("config.lsp")]]
   }
 
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    config = [[ require("config.treesitter") ]]
+    config = [[require("config.treesitter")]]
   }
 
   use {
     "hrsh7th/nvim-cmp", -- Completion engine
-    config = [[ require("config.cmp") ]]
+    config = [[require("config.cmp")]]
   }
 
   use "hrsh7th/cmp-path" -- path completions
@@ -59,7 +65,7 @@ return packer.startup(function(use)
     "L3MON4D3/LuaSnip",
     after = "nvim-cmp",
     requires = "rafamadriz/friendly-snippets", -- Snippets collection
-    config = [[ require("config.luasnip") ]]
+    config = [[require("config.luasnip")]]
   }
 
   -- Git --
@@ -69,14 +75,14 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
       {"sindrets/diffview.nvim"},
       cmd = "Neogit",
-      config = [[ require("config.git.neogit") ]]
+      config = [[require("config.git.neogit")]]
     }
   }
 
   use {
     "lewis6991/gitsigns.nvim",
     requires = {"nvim-lua/plenary.nvim"},
-    config = [[ require("config.git.gitsigns") ]]
+    config = [[require("config.git.gitsigns")]]
   }
 
   -- File / Buffer --
@@ -86,7 +92,7 @@ return packer.startup(function(use)
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     requires = "nvim-lua/plenary.nvim"
-    -- config = [[ require("config.telescope") ]]
+    -- config =[[require("config.telescope")]]
   }
 
   -- Fuzzy finder syntax support
@@ -105,13 +111,13 @@ return packer.startup(function(use)
   -- File explorer
   use {
     "nvim-tree/nvim-tree.lua", -- requires = "nvim-tree/nvim-web-devicons"
-    config = [[ require("config.nvim-tree") ]]
+    config = [[require("config.nvim-tree")]]
   }
 
   -- Keymaps
   use {
     "folke/which-key.nvim",
-    config = [[ require("config.which-key") ]]
+    config = [[require("config.which-key")]]
   }
 
   -- UI --
@@ -120,13 +126,13 @@ return packer.startup(function(use)
   use "navarasu/onedark.nvim"
   use "folke/tokyonight.nvim"
 
-  -- use { "ellisonleao/gruvbox.nvim" }
+  -- use {"ellisonleao/gruvbox.nvim"}
 
   -- Dashboard
   use {
     "goolord/alpha-nvim",
     requires = {"kyazdani42/nvim-web-devicons"},
-    config = [[ require("config.alpha") ]]
+    config = [[require("config.alpha")]]
   }
 
   -- Notification
@@ -144,12 +150,12 @@ return packer.startup(function(use)
   use {
     "norcalli/nvim-colorizer.lua",
     ft = {"scss", "css", "html"},
-    config = [[ require("colorizer").setup() ]]
+    config = [[require("colorizer").setup()]]
   }
 
   use {
     "lukas-reineke/indent-blankline.nvim",
-    config = [[ require("config.indent-blankline") ]]
+    config = [[require("config.indent-blankline")]]
   }
 
   if packer_bootstrap then
