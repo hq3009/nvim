@@ -1,4 +1,5 @@
-require("options")
+require("globals")
+require("basic")
 require("plugins")
 require("colorscheme")
 require("keybindings")

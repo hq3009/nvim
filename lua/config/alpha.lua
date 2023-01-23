@@ -156,12 +156,9 @@ local buttons = {
       position = "center"
     }
   }, dashboard.button("f", "Find File", ":Telescope find_files<cr>"),
-         dashboard.button("b", "File Browser", ":Telescope file_browser grouped=true <CR>"),
          dashboard.button("p", "Search Projects", ":Telescope projects<CR>"),
          dashboard.button("r", "Recent Files", ":Telescope oldfiles <CR>"),
          dashboard.button("e", "New File", ":ene <BAR> startinsert <CR>"),
-         dashboard.button("g", "NeoGit", ":Neogit <CR>"),
-         dashboard.button("c", "Configuration", ":e ~/.config/nvim/ <CR>"),
          dashboard.button("u", "Update Plugins", ":PackerSync --preview<CR>"),
          dashboard.button("q", "Quit", ":qa<CR>")},
   position = "center"

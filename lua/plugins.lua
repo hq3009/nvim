@@ -35,8 +35,8 @@ return packer.startup(function(use)
   -- Built-in LSP
   use {
     "neovim/nvim-lspconfig",
-    wants = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"},
-    requires = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"},
+    -- wants = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"},
+    -- requires = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"},
     config = [[ require("config.lsp") ]]
   }
 
@@ -67,9 +67,7 @@ return packer.startup(function(use)
     "TimUntersberger/neogit",
     requires = {
       "nvim-lua/plenary.nvim",
-      {
-        "sindrets/diffview.nvim",
-      },
+      {"sindrets/diffview.nvim"},
       cmd = "Neogit",
       config = [[ require("config.git.neogit") ]]
     }
@@ -105,7 +103,9 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-project.nvim"
 
   -- File explorer
-  use {"nvim-tree/nvim-tree.lua" -- requires = "nvim-tree/nvim-web-devicons"
+  use {
+    "nvim-tree/nvim-tree.lua", -- requires = "nvim-tree/nvim-web-devicons"
+    config = [[ require("config.nvim-tree") ]]
   }
 
   -- Keymaps
@@ -127,14 +127,6 @@ return packer.startup(function(use)
     "goolord/alpha-nvim",
     requires = {"kyazdani42/nvim-web-devicons"},
     config = [[ require("config.alpha") ]]
-  }
-
-  -- Windows manager
-  use {
-    "anuvyklack/windows.nvim",
-    event = "VimEnter",
-    requires = {"anuvyklack/middleclass", "anuvyklack/animation.nvim"},
-    config = [[ require("config.windows") ]]
   }
 
   -- Notification

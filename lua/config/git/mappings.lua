@@ -1,76 +1,59 @@
-local wk = require("which-key")
-local map = require("utils").map
 local gs = package.loaded.gitsigns
+local map = vim.keymap.set
 
 M = {}
-
 function M.setup()
-  wk.register({
-    g = {
-      name = "Git",
-      ["<Enter>"] = {"<cmd>Neogit<cr>", "Neogit"},
-      a = {gs.stage_buffer, "Stage buffer"},
-      b = {"<cmd>Telescope git_branches<cr>", "Branches"},
-      c = {"<cmd>G commit %<cr>", "Commit buffer"},
-      C = {"<cmd>Telescope git_commits<cr>", "Commits"},
-      d = {gs.diffthis, "Diff"},
-      p = {"<cmd>G push<cr>", "Push"},
-      r = {
-        name = "Reset",
-        R = {gs.reset_buffer, "Reset buffer"}
-      },
-      s = {"<cmd>Telescope git_status<cr>", "Status"},
-      u = {gs.undo_stage_hunk, "Undo stage hunk"},
-      P = {gs.preview_hunk, "Preview hunk"},
-      B = {function()
-        gs.blame_line({
-          full = true
-        })
-      end, "Blame full"},
-      L = {gs.toggle_current_line_blame, "Blame line"},
-      x = {gs.toggle_deleted, "Show deleted"}
-    }
-  }, {
-    prefix = "<leader>",
-    mode = "n",
-    silent = true
+  map("n", "<space>ga", "gs.stage_buffer", {
+    silent = True,
+    desc = "Stage Buffer"
   })
-
-  -- TODO with german qwertz this bindings are awful
-  map("n", "]c", function()
-    if vim.wo.diff then
-      return "]c"
-    end
-    vim.schedule(function()
-      gs.next_hunk()
-    end)
-    return "<Ignore>"
-  end, {
-    desc = "Next hunk",
-    expr = true
+  map("n", "<space>gb", "<cmd>Telescope git_branches<cr>", {
+    silent = True,
+    desc = "Branches"
   })
-
-  map("n", "[c", function()
-    if vim.wo.diff then
-      return "[c"
-    end
-    vim.schedule(function()
-      gs.prev_hunk()
-    end)
-    return "<Ignore>"
-  end, {
-    desc = "Previous hunk",
-    expr = true
+  map("n", "<space>gc", "<cmd>G commit %<cr>", {
+    silent = True,
+    desc = "Commit buffer"
   })
-
-  map({"n", "v"}, "<leader>gR", "<cmd>Gitsigns reset_hunk<cr>", {
-    desc = "Reset hunk"
+  map("n", "<space>gd", gs.diffthis, {
+    silent = True,
+    desc = "Diff"
   })
-  map({"n", "v"}, "<leader>gA", "<cmd>Gitsigns stage_hunk<cr>", {
-    desc = "Stage hunk"
+  map("n", "<space>gp", "<cmd>G push<cr>", {
+    silent = True,
+    desc = "Push"
   })
-  map({"o", "x"}, "<leader>gS", "<cmd><C-U>Gitsigns select_hunk<cr>", {
-    desc = "Select hunk"
+  map("n", "<space>gr", gs.reset_buffer, {
+    silent = True,
+    desc = "Reset buffer"
+  })
+  map("n", "<space>gs", "<cmd>Telescope git_status<cr>", {
+    silent = True,
+    desc = "Status"
+  })
+  map("n", "<space>gU", gs.undo_stage_hunk, {
+    silent = True,
+    desc = "Undo Stage Hunk"
+  })
+  map("n", "<space>gn", gs.next_hunk, {
+    silent = True,
+    desc = "Next Hunk"
+  })
+  map("n", "<space>gN", gs.preview_hunk, {
+    silent = True,
+    desc = "Preview Hunk"
+  })
+  map("n", "<space>gfB", gs.blame_line, {
+    silent = True,
+    desc = "Blame full"
+  })
+  map("n", "<space>gfb", gs.toggle_current_line_blame, {
+    silent = True,
+    desc = "Blame line"
+  })
+  map("n", "<space>gx", gs.toggle_deleted, {
+    silent = True,
+    desc = "Show deleted"
   })
 end
 
