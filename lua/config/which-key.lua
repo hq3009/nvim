@@ -50,7 +50,7 @@ wk.register {
     p = "Project",
     q = "Quit",
     s = "Search",
-    t = "Tab",
+    t = "Tab/Terminal",
     u = "Util",
     v = "View/Visual",
     w = "Window",

@@ -66,6 +66,13 @@ map("n", "<leader>wj", "<c-w>j")
 map("n", "<leader>wk", "<c-w>k")
 map("n", "<leader>wl", "<c-w>l")
 
+map("n", "<leader>ww", "<C-W>p", {
+  desc = "Other window"
+})
+map("n", "<leader>wd", "<C-W>c", {
+  desc = "Delete window"
+})
+
 -- Buffer
 map("n", "<leader><tab>", "<cmd>e#<cr>", {
   desc = "Prev Buffer"
@@ -80,6 +87,9 @@ map("n", "<leader>k", "<cmd>bd<cr>", {
   desc = "Delete Buffer"
 })
 map("n", "<leader>bk", "<cmd>bd<cr>", {
+  desc = "Delete Buffer"
+})
+map("n", "<leader>K", "<cmd>bd!<cr>", {
   desc = "Delete Buffer"
 })
 map("n", "<leader>bK", "<cmd>bd!<cr>", {
@@ -106,7 +116,7 @@ map('n', '<leader>fh', "<cmd>Telescope help_tags<cr>", {
   desc = "Help Tags"
 })
 map("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", {
-  desc = "File browser"
+  desc = "File Browser"
 })
 map("n", "<leader>fp", "<cmd>Neotree reveal toggle<cr>", {
   desc = "Toggle Filetree"
@@ -118,13 +128,31 @@ map("n", "<leader>fs", "<cmd>w<cr>", {
   desc = "Save Buffer"
 })
 
+-- Specific Folder
+-- map("n", "<leader>foh", function() require("Telescope").cd('$HOME') end, {})
+
 -- Switch to the directory of the open buffer
 map("n", "<leader>fj", "<cmd>lcd %:p:h<cr><cmd>pwd<cr>")
 
 -- Tab
-map("n", "<leader>tN", "<cmd>tabnew<cr>")
-map("n", "<leader>th", "<cmd>tabprevious<cr>")
-map("n", "<leader>tl", "<cmd>tabnext<cr>")
+map("n", "<leader>td", "<cmd>tabclose<cr>", {
+  desc = "Close Tab"
+})
+map("n", "<leader>th", "<cmd>tabprevious<cr>", {
+  desc = "Previous Tab"
+})
+map("n", "<leader>tl", "<cmd>tabnext<cr>", {
+  desc = "Next Tab"
+})
+map("n", "<leader>tH", "<cmd>tabfirst<cr>", {
+  desc = "First Tab"
+})
+map("n", "<leader>tL", "<cmd>tablast<cr>", {
+  desc = "Last Tab"
+})
+map("n", "<leader>tN", "<cmd>tabnew<cr>", {
+  desc = "New Tab"
+})
 
 -- Jump/Show
 map("n", "<leader>jo", "<cmd>SymbolsOutline<cr>", {
@@ -148,7 +176,7 @@ map("n", "<leader>up", "<cmd>PackerSync --preview<cr>", {
 map("n", "<leader>vb", "C-v", {
   desc = "Block"
 })
-map("n", "<leader>vh", "ggVG", {
+map("n", "<leader>vh", "gg<S-v>G", {
   desc = "Select All"
 })
 map("n", "<leader>vn", "<cmd>nohlsearch<cr>", {
@@ -186,6 +214,9 @@ map("n", "<leader>ws", "<C-w>s", {
 map("n", "<leader>wv", "<C-w>v", {
   desc = "Split Vertically"
 })
+
+-- Terminal
+map("n", "<leader>tt", "<cmd>terminal<cr>")
 
 -- Error
 map("n", "<leader>xn", "<cmd>cnext<cr>", {

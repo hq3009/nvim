@@ -38,12 +38,17 @@ return packer.startup(function(use)
 
   -- Coding --
 
-  -- Built-in LSP
+  -- LSP
   use {
     "neovim/nvim-lspconfig",
-    -- wants = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"},
-    -- requires = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"},
     config = [[require("config.lsp")]]
+  }
+
+  use "williamboman/mason.nvim"
+
+  use {
+    "williamboman/mason-lspconfig.nvim",
+    config = [[require("config.lsp.mason")]]
   }
 
   -- Treesitter
@@ -53,12 +58,18 @@ return packer.startup(function(use)
     config = [[require("config.treesitter")]]
   }
 
+  -- Completion
+
   use {
     "hrsh7th/nvim-cmp", -- Completion engine
     config = [[require("config.cmp")]]
   }
 
-  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-nvim-lsp" -- Completion for built-in LSP
+
+  use "hrsh7th/cmp-path" -- Completions for path
+
+  use "hrsh7th/cmp-buffer" -- Completion for buffer words
 
   -- Snippets
   use {
@@ -157,6 +168,8 @@ return packer.startup(function(use)
     "lukas-reineke/indent-blankline.nvim",
     config = [[require("config.indent-blankline")]]
   }
+
+  use "iamcco/markdown-preview.nvim"
 
   if packer_bootstrap then
     require("packer").sync()
