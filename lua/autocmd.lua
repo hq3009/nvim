@@ -102,6 +102,6 @@ autocmd({"BufRead", "BufNewFile"}, {
   pattern = {"*.txt", "*.md", "*.tex"},
   callback = function()
     o.spell = true
-    o.spelllang = "en,de"
+    o.spelllang = "en"
   end
 })

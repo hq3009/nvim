@@ -21,7 +21,7 @@ local function get_extension(fn)
 end
 
 local function icon(fn)
-  local nwd = require("nvim-web-devicons")
+  -- local nwd = require("nvim-web-devicons")
   local ext = get_extension(fn)
   return nwd.get_icon(fn, ext, {
     default = true
@@ -45,7 +45,7 @@ local function file_button(fn, sc, short_fn)
   end
   ico_txt = ico .. "  "
 
-  local file_button_el = dashboard.button(sc, ico_txt .. short_fn, "<cmd>e " .. fn .. " <CR>")
+  local file_button_el = dashboard.button(sc, ico_txt .. short_fn, "<cmd>e " .. fn .. " <cr>")
   local fn_start = short_fn:match(".*/")
   if fn_start ~= nil then
     table.insert(fb_hl, {"Comment", #ico_txt - 2, #fn_start + #ico_txt - 2})
@@ -62,9 +62,6 @@ local mru_opts = {
   end
 }
 
---- @param start number
---- @param cwd string optional
---- @param items_number number optional number of items to generate, default = 10
 local function mru(start, cwd, items_number, opts)
   opts = opts or mru_opts
   items_number = items_number or 9
@@ -156,24 +153,23 @@ local buttons = {
       position = "center"
     }
   }, dashboard.button("f", "Find File", ":Telescope find_files<cr>"),
-         dashboard.button("p", "Search Projects", ":Telescope projects<CR>"),
-         dashboard.button("r", "Recent Files", ":Telescope oldfiles <CR>"),
-         dashboard.button("e", "New File", ":ene <BAR> startinsert <CR>"),
-         dashboard.button("u", "Update Plugins", ":PackerSync --preview<CR>"),
-         dashboard.button("q", "Quit", ":qa<CR>")},
+         dashboard.button("p", "Search Projects", ":telescope projects<cr>"),
+         dashboard.button("r", "Recent Files", ":telescope oldfiles <cr>"),
+         dashboard.button("e", "New File", ":ene <bar> startinsert <cr>"),
+         dashboard.button("u", "Update Plugins", ":packersync --preview<cr>"),
+         dashboard.button("q", "Quit", ":qa<cr>")},
   position = "center"
 }
 
 local header = {
   type = "text",
-  val = {[[                                                 ]],
-         [[                                                 ]],
-         [[                                                 ]],
-         [[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
-         [[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
-         [[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
-         [[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
-         [[██   ████ ███████  ██████    ████   ██ ██      ██]]},
+  val = {[[                                               ]],
+         [[                                               ]],
+         [[     _   __ ______ ____  _    __ ____ __  ___  ]],
+         [[    / | / // ____// __ \| |  / //  _//  |/  /  ]],
+         [[   /  |/ // __/  / / / /| | / / / / / /|_/ /   ]],
+         [[  / /|  // /___ / /_/ / | |/ /_/ / / /  / /    ]],
+         [[ /_/ |_//_____/ \____/  |___//___//_/  /_/     ]]},
   opts = {
     position = "center",
     hl = "AlphaHeader"

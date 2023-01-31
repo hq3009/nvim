@@ -18,12 +18,14 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", {
 })
 
 -- Goto start/end of visual line
-map("n", "gl", "g$", {
-  silent = true
-})
-map("n", "gh", "g^", {
-  silent = true
-})
+map({"n", "v"}, "H", "^")
+map({"n", "v"}, "L", "$")
+map("n", "gh", "g^")
+map("n", "gl", "g$")
+map("n", "g.", "G")
+map("n", "gH", "H")
+map("n", "gL", "L")
+map("n", "gM", "M")
 
 -- Better indenting
 map("v", "<", "<gv")

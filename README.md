@@ -52,7 +52,7 @@ nvm install --lts
 Install tree-sitter-cli:
 
 ```shell
-pm install -g tree-sitter-cli
+npm install -g tree-sitter-cli
 ```
 
 ## install packer manually
